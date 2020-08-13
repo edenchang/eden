@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<style>
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+  }
+
+  #image {
+    background-image: url('./images/under-construction.jpg');
+    height: 100%;
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    position: relative;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 25px;
+  }
+
+  .topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+  }
+
+  .bottomleft {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+  }
+
+  .middle {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+  }
+
+  hr {
+    margin: auto;
+    width: 40%;
+  }
+</style>
+
+<body>
+
+  <div class="container">
+    <div class="desktop-navbar">
+
+      <div class="desktop-navbar__container">
+        <div class="desktop-navbar__logo">
+          <a href="./index.html">
+            <img src="./images/CookingBap_header.jpg" width="150" height="110">
+          </a>
+        </div>
+        <div class="middle">
+          <h1>COMING SOON</h1>
+          <p> please still drop by our storefront as we get this up and running</p>
+          <img src="./images/Under-construction.jpg" width="110" height="110">
+          <hr>
+        </div>
+        <div class="bottomleft">
+          <!-- <p><img src="../images/CookingBap header.jpg" width="100" height="50"></p> -->
+        </div>
+      </div>
+
+
+
+
+      <footer class="footer">
+        <div class="footer__row">
+          <div class="footer__logo">
+            <a href="./index.html">
+            </a>
+          </div>
+          <div class="footer__signup">
+            <div class="klaviyo-form-NyTbUJ klaviyo-form form-version-cid-1">
+              <div class="needsclick undefined kl-private-reset-css-Xuajs1">
+                <form
+                  class="needsclick View__FormView-sc-1ou3cq2-0 uZdWz klaviyo-form-version-cid_1 kl-private-reset-css-Xuajs1"
+                  novalidate="" isembed="true" tabindex="-1">
+                  <div class="needsclick Column__FormColumn-z5j99u-0 Ndwyt kl-private-reset-css-Xuajs1">
+                    <div data-testid="form-row"
+                      class="needsclick Row__FormRow-sc-17nghml-0 kgtZbf kl-private-reset-css-Xuajs1">
+                      <div component="[object Object]" formcomponentstyling="[object Object]"
+                        data-testid="form-component" formcomponenttheme="[object Object]"
+                        class="needsclick FormComponent__StyledFormComponentWrapper-e0xun6-0 dMHKxR kl-private-reset-css-Xuajs1">
+                        <div
+                          class="RichText__StyledQuillContainer-sc-11o3xhj-0 bwIBYc undefined kl-private-reset-css-Xuajs1 kl-private-quill-wrapper-Lkqws1">
+
+                          <div class="ql-clipboard" contenteditable="true" tabindex="-1">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <input type="email" name="email" id="emailid" tabindex="0" styling="[object Object]"
+                      placeholder="Enter your email" aria-label="Enter your email" aria-invalid="false" valid="1"
+                      options="[object Object]">
+                    <button type="button" id="subscribe" tabindex="0"
+                      style="color: white; background-color: #008CBA; font-size: 20px; padding: 10px 10px;">Subscribe</button>
+                  </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__nav">
+          <nav>
+            <ul>
+              <li><a href="./underconstruction.html" target="new">Event</a></li>
+              <li><a href="./aboutus.html">About Us</a></li>
+              <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+            <ul>
+              <li><a href="./underconstruction.html" target="new">Terms of Use</a></li>
+              <li><a href="./underconstruction.html" target="new">Privacy Policy</a></li>
+            </ul>
+          </nav>
+        </div>
+    </div>
+    <div class="footer__row">
+      <div class="footer__copyright footer__copyright--desktop">
+        <p>&copy; 2020 Eden Chang</p>
+      </div>
+
+
+    </div>
+    </footer>
+
+  </div>
+  <script type="text/JavaScript">
+document.getElementById("subscribe").addEventListener("click", function(){
+var inputVal = document.getElementById("emailid").value;
+alert("Your email is: " + inputVal);});
+</script>
+</body>
+
+</html>

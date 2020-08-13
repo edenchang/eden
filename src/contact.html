@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CookingBap</title>
+  <link href="./css/style.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="canonical" href="./index.html">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" type="text/css"
+    media="all">
+
+  <!-- Load Bootstrap's CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <style>
+    @charset "UTF-8";
+    @import url('https://fonts.googleapis.com/css?family=Halant|Montserrat');
+
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      color: #555555;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .desktop-navbar__menu a {
+      line-height: 1.8;
+      text-decoration: none;
+      font-size: small;
+      color: #ffffff;
+    }
+
+    .desktop-navbar {
+      position: fixed;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      z-index: 1000;
+      width: 100%;
+      height: 110px;
+      background: #ffffff;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    }
+
+    @media screen and (max-width: 63.9375em) {
+      .desktop-navbar {
+        display: none;
+      }
+    }
+
+    .desktop-navbar__container {
+      max-width: 75rem;
+      margin-left: auto;
+      margin-right: auto;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 110px;
+    }
+
+    .desktop-navbar__container:before,
+    .desktop-navbar__container:after {
+      content: ' ';
+      display: table;
+      -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+      -webkit-box-ordinal-group: 2;
+      -webkit-order: 1;
+      -ms-flex-order: 1;
+      order: 1;
+    }
+
+    .desktop-navbar__container:after {
+      clear: both;
+    }
+
+    .squished .desktop-navbar__container {
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 80px;
+    }
+
+    .desktop-navbar__logo {
+      float: left;
+      line-height: 0;
+      margin-top: 10px;
+      margin-left: 21px;
+    }
+
+    .desktop-navbar__menu {
+      float: right;
+      margin-right: 21px;
+      margin-top: 2px;
+    }
+
+    .desktop-navbar__menu ul {
+      width: 100%;
+      list-style: none;
+      margin-bottom: 0;
+    }
+
+    .desktop-navbar__menu li {
+      position: relative;
+      float: left;
+      margin-left: 35px
+    }
+
+    .desktop-navbar__menu a {
+      display: block;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      padding-top: 0;
+      padding-bottom: 0;
+      text-transform: uppercase;
+      line-height: 110px;
+      color: #555555;
+      font-weight: 500;
+      font-size: 14px;
+
+    }
+
+    .desktop-navbar__menu-link {
+      display: block;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      padding-top: 0;
+      padding-bottom: 0;
+      text-transform: uppercase;
+      line-height: 110px;
+      color: #555555;
+      font-weight: 500;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    .desktop-navbar__menu a:hover,
+    .desktop-navbar__menu a:focus {
+      color: #555555;
+    }
+
+    .squished .desktop-navbar__menu a {
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      line-height: 80px;
+    }
+
+    .desktop-navbar__menu-link:after {
+      position: absolute;
+      bottom: 32px;
+      left: 0;
+      right: 0;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      opacity: 0;
+      margin: auto;
+      text-align: center;
+      content: '__';
+      pointer-events: none;
+    }
+
+    .squished .desktop-navbar__menu-link:after {
+      -webkit-transition: bottom 0.3s;
+      transition: bottom 0.3s;
+      bottom: 17px;
+    }
+
+    .desktop-navbar__menu-link:hover:after,
+    .desktop-navbar__menu-link--active:after {
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      opacity: 1;
+    }
+
+    .desktop-navbar__cart-info {
+      position: relative;
+      margin-left: 13px !important;
+      margin-right: 6px !important;
+      margin-top: 15px;
+    }
+
+    .desktop-navbar__cart-info svg {
+      position: relative;
+      top: 7px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .desktop-navbar__cart-item-count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      height: 25px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .desktop-navbar__sign-in {
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      padding: 0 40px;
+      color: black
+    }
+
+    .desktop-navbar__sign-in a,
+    .desktop-navbar__sign-in a:hover,
+    .desktop-navbar__sign-in a:focus {
+      color: black;
+      font-weight: 700;
+    }
+
+    .desktop-navbar__menu-sub:hover .desktop-navbar__menu-sub-wrap {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .desktop-navbar__menu-sub-wrap {
+      background-color: #f6f5f5;
+      left: -4.4rem;
+      margin: 0;
+      position: absolute;
+      text-align: left;
+      /* center; */
+      width: 9rem !important;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .desktop-navbar__menu-sub-wrap li {
+      float: none;
+      line-height: 2.9;
+      /* border-bottom: 2px black solid; */
+      margin-left: 0;
+    }
+
+    .desktop-navbar__menu-sub-wrap li:last-child {
+      border-bottom: none;
+    }
+
+    .desktop-navbar__menu-sub-wrap li a {
+      line-height: 2.9;
+    }
+
+    #appointment-form {
+      margin-left: 100px;
+      margin-right: 100px;
+    }
+
+  </style>
+
+</head>
+
+<body style>
+  <!--  <div class="parallax-mirror"
+    style="visibility: visible; z-index: -100; position: fixed; top: 110px; left: 0px; overflow: hidden; transform: translate3d(0px, 0px, 0px); height: 793px; width: 100%;">
+    <img src="./images/donutpromo.jpeg" alt="donutpromo"
+      style="transform: translate3d(0px, 0px, 0px); position: absolute; top: -200px; left: -5px; height: 100%; width: 100%;">
+  </div>  -->
+
+  <div style="height: 0; width: 0; position: absolute; visibility: hidden">
+
+    <!--?xml version="1.0" encoding="utf-8"?-->
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <!-- down arrow -->
+      <symbol viewBox="-23 45.9 91.2 50.1" id="cookingbab_downarrow">
+        <path
+          d="M60.5 47.2C47.9 59.9 35.2 72.5 22.6 85.1 10 72.5-2.7 59.9-15.3 47.2c-4.1-4.1-10.5 2.3-6.4 6.4l41.1 41.1c1.7 1.7 4.6 1.7 6.4 0l41.1-41.1c4.1-4.1-2.3-10.5-6.4-6.4z"
+          fill="#fff"></path>
+      </symbol>
+      <!--  facebook  -->
+      <symbol viewBox="0 0 49 47.6" id="cookingbab-facebook-logo">
+        <path
+          d="M35.9 11.6h-4c-4 0-3.4 2.8-3.4 2.8v2.5h7.1V27h-7.1v18.8H18.4V27h-5.2V16.6h5.2V12C18.4 2.4 27 1.8 27 1.8h8.6l.3 9.8z"
+          fill="#fff"></path>
+      </symbol>
+      <!-- twitter  -->
+      <symbol viewBox="0 0 49 47.6" id="cookingbab-twitter-logo">
+        <path
+          d="M45 11.1c4.9 26.8-21.2 42.8-41.5 34.2 6.2-1.5 9.8-3.4 13.8-7.1-7.7.6-11.1-5.8-11.1-5.8s1.8-.6 4-.9C1.9 29.3.7 22 .7 22s1.8.6 4.9.6c-4-2.5-7.1-9.2-4.9-13.2 7.1 5.8 15.7 8 23.4 7.4 0 0-3.1-6.8 1.8-11.7C33.9-1.8 40.7 4 40.7 4s4.3-2.5 6.5-4c-.3 4.9-3.4 6.8-3.4 6.8s2.5-.6 5.2-2.2c-.9 2.8-4 6.5-4 6.5z"
+          fill="#fff"></path>
+      </symbol>
+      <!-- instagram  -->
+      <symbol viewBox="0 0 49 47.6" id="cookingbab-instagram-logo">
+        <path
+          d="M38.3 1.6H10.7C6 1.6 2.3 5.3 2.3 9.9v27.7c0 4.6 3.7 8.3 8.3 8.3h27.7c4.6 0 8.3-3.7 8.3-8.3V9.9c.4-4.6-3.6-8.3-8.3-8.3zM24.5 16.4c4.9 0 8.9 4 8.9 8.9s-4 8.9-8.9 8.9-8.9-4-8.9-8.9 4-8.9 8.9-8.9zm8-2.2V9.3c0-.9.9-1.8 1.8-1.8h4.9c.9 0 1.8.9 1.8 1.8v4.9c0 .9-.9 1.8-1.8 1.8h-4.9c-.9.1-1.8-.8-1.8-1.8zm5.8 28.4H10.7c-2.8 0-4.9-2.2-4.9-4.9v-17h7.1c-.6 1.5-.9 2.8-.9 4.3 0 6.8 5.5 12.6 12.6 12.6S37.1 32.1 37.1 25c0-1.5-.3-3.1-.9-4.3h7.1v16.9c0 2.8-2.2 5-5 5z"
+          fill="#fff"></path>
+      </symbol>
+      <!-- pintrest -->
+      <symbol viewBox="0 0 49 47.6" id="cookingbab-pinterest-logo">
+        <path
+          d="M41.6 19.2c-.2 2.9-.9 5.6-2.2 8.2-2.1 4-5.2 6.7-9.8 7.3-3.1.4-5.8-.3-7.9-3-.3 1-.5 2-.8 3-.5 1.9-1 3.9-1.7 5.8-.4 1.2-1.2 2.3-1.7 3.5-1 1.7-3.1.8-3.2-1.6 0-1.6 0-3.3.4-4.9 1.1-4.6 2.2-9.3 3.3-13.9 0-.2 0-.5-.1-.7-.8-2.2-.9-4.5-.1-6.7.5-1.4 1.3-2.5 2.7-3.2 2.3-1.1 4.6.1 5 2.6.1.4.1.8.1 1.1-.1.9-.2 1.8-.5 2.7-.5 2.1-1.2 4.1-1.7 6.1s.6 4 2.6 4.6c1.7.5 3.3.1 4.7-.9 1.3-.9 2.2-2.1 2.9-3.5 1.5-3.1 2.1-6.5 1.8-9.9-.3-3.7-2.1-6.4-5.6-7.8-2.3-.9-4.7-1.1-7.1-.7-5 .8-8.4 3.7-9.8 8.6-.9 3.1-.9 6.1 1.4 8.7.2.2.2.6.2.9-.1.7-.3 1.4-.5 2.1-.2.9-.7 1.1-1.5.7-1.6-.7-2.8-1.8-3.6-3.3-1.3-2.3-1.7-4.9-1.4-7.5.5-4.7 2.7-8.4 6.5-11.2 5-3.6 10.7-4.4 16.6-2.8 4.7 1.2 8.1 4.2 10 8.7 1 2.2 1.2 4.6 1 7z"
+          fill="#fff"></path>
+      </symbol>
+    </svg>
+
+  </div>
+
+  <div>
+    <!--  class="container"> -->
+    <div class="desktop-navbar">
+
+      <div class="desktop-navbar__container">
+        <div class="desktop-navbar__logo">
+          <a href="./index.html">
+            <img src="./images/CookingBap_header.jpg" alt="cookingbap header" width="150" height="110">
+          </a>
+        </div>
+        <nav class="desktop-navbar__menu">
+          <ul>
+            <li class="desktop-navbar__menu-link  desktop-navbar__menu-sub">Shop
+              <ul class="desktop-navbar__menu-sub-wrap">
+                <li class="desktop-navbar__menu-sub-link"><a href="./index.html#eat-in">Eat-In</a></li>
+                <li class="desktop-navbar__menu-sub-link">Take-Out</li>
+              </ul>
+            </li>
+            <li class="desktop-navbar__menu-link  desktop-navbar__menu-sub">About
+              <ul class="desktop-navbar__menu-sub-wrap">
+                <li class="desktop-navbar__menu-sub-link"><a href="./aboutus.html">About</a></li>
+                <li class="desktop-navbar__menu-sub-link"><a href="./faq.html">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="desktop-navbar__menu-link  desktop-navbar__menu-sub">Explore</li>
+            <li class="desktop-navbar__menu-link  desktop-navbar__menu-sub"><a href="./contact.html">Contact Us</a></li>
+            <li class="desktop-navbar__menu-link ">Cart</li>
+            <li class="desktop-navbar__cart-info"><img src="./images/cart.jpg" alt="shoppingcart" width="70"
+                height="70"></li>
+            <li class="desktop-navbar__menu-link">Sign Up</li>
+            <li class="desktop-navbar__menu-link">Log In</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="homepage">
+
+      <div class="homepage__hero-container">
+        <!-- main page image -->
+        <div data-parallax="scroll" data-speed="0.5" data-natural-width="1920" data-natural-height="1280"
+          data-image-src="">
+        </div>
+
+        <!-- <body>  -->
+
+        <form id="appointment-form" action="/https://httpbin.org/post" method="post">
+
+
+          <input type="hidden" id="153809199" name="edenchang">
+
+          <dix class="row">
+            <!-- displays on same div class row -->
+            <div class="col form-group">
+              <label for="fname"><span class="text-danger">*</span> First Name</label>
+              <input id="fname" class="form-control" name="fname" autocomplete="given-name" type="text"
+                autofocustabindex="1" required>
+              <!-- given-name = for first name-->
+            </div> <!-- Close first name -->
+            <div class="col form-group">
+              <label for="lname"><span class="text-danger">*</span> Last Name</label>
+              <input id="lname" class="form-control" name="lname" autocomplete="family-name" type="text" tabindex="2"
+                required>
+              <!-- family-name = for last name-->
+            </div> <!-- Close last name-->
+
+          </dix> <!-- Close first name row -->
+
+          <div class="row">
+            <!-- displays on same div class row -->
+            <div class="form-group col">
+              <label for="email"><span class="text-danger">*</span> Email Address</label>
+              <input id="email" class="form-control" name="email" type="email" tabindex="4"
+                placeholder="someone@myseneca.ca" required>
+            </div> <!-- Close email address -->
+            <div class="form-group col">
+              <label for="phone">Phone Number</label>
+              <input id="phone" class="form-control" name="phone" autocomplete="tel" type="tel" tabindex="5">
+              <small class="form-text text-muted">Optional</small>
+              <!--    <small class="form-text text-muted">Optional</small> adds text below user input, 
+          smaller font (small class) and softer color (text-muted) -->
+            </div> <!-- Close phone number -->
+          </div> <!-- Close email address row -->
+
+          <div class="row">
+            <!-- displays on same div class row -->
+            <div class="col form-group">
+              <label for="city"><span class="text-danger">*</span> Street Address</label>
+              <input id="address" class="form-control" name="address" autocomplete="street-address" type="text"
+                tabindex="6" required>
+            </div>
+          </div> <!-- Close address row -->
+
+          <div class="row">
+            <!-- displays on same div class row -->
+
+            <div class="col form-group">
+              <label for="province"><span class="text-danger">*</span> City</label>
+              <select id="province" class="form-control" name="province" autocomplete="address-level1" tabindex="8">
+
+                <!-- Province Options -->
+                <option>-- Please Choose --</option>
+                <option>St. Johns</option>
+                <option>Charlottetown</option>
+                <option>Halifax</option>
+                <option>Fredricton</option>
+                <option>Quebéc City</option>
+                <option>Toronto</option>
+                <option>Winnpeg</option>
+                <option>Regina</option>
+                <option>Edmonton</option>
+                <option>Victoria</option>
+                <option>Iqaluit</option>
+                <option>Yellowknife</option>
+                <option>Whitehorse</option>
+              </select> <!-- Close Province -->
+            </div>
+            <div class="col form-group">
+              <label for="postal-code"><span class="text-danger">*</span> Postal Code</label>
+              <input id="postal-code" class="form-control" name="post-code" autocomplete="postal-code" type="text"
+                tabindex="9" placeholder="M5W 1E6" pattern="^[A-Za-z]\d[A-Za-z][ -]\d[A-Za-z]\d$" required>
+            </div> <!-- Close postal code -->
+          </div> <!-- Close city row -->
+
+          <div class="row">
+            <!-- displays on same div class row -->
+            <div class="col form-group">
+              <label class="mr-2"><span class="text-danger">*</span> Reason:</label>
+
+              <div class="form-check form-check-inline">
+                <input id="appt-orderproblem" class="form-check-input" type="radio" name="appt" value="orderproblem" checked>
+                <label class="form-check-label" for="appt-orderproblem">Order Problem</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input id="appt-question" class="form-check-input" type="radio" name="appt" value="question">
+                <label class="form-check-label" for="appt-question">Question</label>
+              </div> <!-- Close question row -->
+              
+              <div class="form-check form-check-inline">
+                <input id="appt-comment" class="form-check-input" type="radio" name="appt" value="comment">
+                <label class="form-check-label" for="appt-comment">Comment</label>
+              </div> <!-- Close comment row -->
+
+              <div class="orderproblem box">
+                <label for="desc">Order Number</label>
+                <textarea id="desc" class="form-control-input" name="description" rows="1" type="text" placeholder="Order Number"></textarea>
+              </div>
+
+
+            </div> <!-- Close evening row -->
+          </div>
+
+          <div class="row">
+            <!-- displays on same div class row -->
+            <div class="col form-group">
+              <label for="desc">Messages</label>
+              <textarea id="desc" class="form-control" name="description" rows="5" tabindex="12" type="text" placeholder="Enter Comment Here"></textarea>
+            </div>
+          </div>
+
+      </div> <!-- Close hero-container row -->
+
+
+
+      <div class="d-flex flex-row-reverse mt-2">
+        <input class="btn btn-primary" type="submit" name="submit" value="Submit" tabindex="8">
+        <input class="btn btn-secondary mr-3" type="reset" name="reset" value="Reset" tabindex="9">
+      </div>
+
+      </form>
+
+      <footer class="footer">
+        <div class="footer__row">
+          <div class="footer__logo">
+            <a href="./index.html">
+              <img src="./images/CookingBap_footer.jpg" width="200" height="140">
+            </a>
+          </div>
+
+          <div class="footer__nav">
+            <nav>
+              <ul>
+                <li>Event</li>
+                <li><a href="./aboutus.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+              </ul>
+              <ul>
+                <li>Terms of Use</li>
+                <li>Privacy Policy</li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="footer__signup">
+            <form name="subscribe" action="https://formspree.io/mnqgrzdk" method="POST">
+              <div style="text-align:center;">
+                <label>
+                  <p style="text-align: center;"><strong style="font-size: 24px; color: white;">Sign up for our
+                      newsletter</strong></p>
+                </label>
+              </div>
+              <div>
+                <input type="email" name="email" id="emailid" tabindex="0" placeholder="Enter your email"
+                  autocomplete="email">
+                <button type="submit" id="subscribe" tabindex="1"
+                  style="color: white; background-color: #008CBA; font-size: 20px; padding: 10px 10px;">Subscribe</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="footer__row">
+          <div class="footer__copyright footer__copyright--desktop">
+            <p>&copy; 2020 Eden Chang</p>
+          </div>
+          <div class="footer__social-links">
+            <ul>
+              <li>
+                <svg>
+                  <use xlink:href="#cookingbab-facebook-logo"></use>
+                </svg>
+              </li>
+              <li>
+                <svg>
+                  <use xlink:href="#cookingbab-twitter-logo"></use>
+                </svg>
+              </li>
+              <li><a href="https://www.instagram.com/cookingbap/" target="new">
+                <svg>
+                  <use xlink:href="#cookingbab-instagram-logo"></use>
+                </svg>
+              </a>
+            </li>
+              <!--
+              <li>
+                  <svg>
+                    <use xlink:href="#cookingbab-pinterest-logo"></use>
+                  </svg>
+                -->
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+ <!--   
+   <script type="text/JavaScript">
+document.getElementById("subscribe").addEventListener("click", function(){
+var inputVal = document.getElementById("emailid").value;
+alert("Your email is: " + inputVal);});
+</script>
+-->
+
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('input[type="radio"]').click(function () {
+          var inputValue = $(this).attr("value");
+          var targetBox = $("." + inputValue);
+          $(".box").not(targetBox).hide();
+          $(targetBox).show();
+        });
+      });
+    </script>
+
+</body>
+
+</html>
